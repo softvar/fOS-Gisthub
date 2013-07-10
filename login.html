@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="description" content="GistHub">
+<meta name="keywords" content="IndexedDB, GitHub, Gist, GistHub, GitHub Api">
+<meta name="author" content="Varun Malhotra">
+<meta charset="UTF-8">
+
+
+<link rel="stylesheet" href="css/bootstrap.min.css"></link>
+<link rel="stylesheet" href="css/style.css"></link>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script> 
+<!--<script src="js/jquery-1.8.2.min.js"></script>-->
+
+<script type="text/javascript" src="js/bootstrap-modal.js"></script>
+<script type="text/javascript" src="js/bootstrap-alert.js"></script>
+</head>
+<body>
+<div id="header">GistHub</div>
+<div id="tagline">The app GistHub will be able to read your GitHub's public information</div>
+
+<div id="loginHeader"><p>Sign In</p></div>
+<div id="loginBox" >
+<p>Username or Email</p>
+<input type="text" id="user" placeholder="enter name"/><br>
+<p>Password</p>
+<input type="password" id="pass" placeholder="enter password"/><br>
+
+<input type="button" class="btn-success" value="Sign In" data-type="sign"/>
+</div>
+<div id="wrong_credential"></div>
+
+<div id="wait" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  
+  <div class="modal-body">
+    <div class="circle"></div><div class="circle1"></div></div>
+  </div>
+  
+
+
+<script src="js/login.js"></script>
+</body>
+</html>
