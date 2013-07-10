@@ -1,0 +1,27 @@
+{
+  "name": "GistHub",
+  "description": "Managing Github-Gist",
+  "version": "1.0.1",
+  "type": "web",
+  "launch_path": "/login.html",
+  "developer": {
+    "name": "Varun Malhotra",
+    "url": "https://github.com/softvar/fos-Gisthub"
+  },
+  
+  "icons": {
+    "128": "/css/icons/128.png",
+    "60": "/css/icons/60.png"
+  },
+  "orientation": "portrait-primary",
+  
+  "csp" : "default-src *; script-src 'self' 'unsafe-eval'; object-src 'none'; style-src 'self' 'unsafe-inline'",
+  "locales": {
+    "en": {
+      "name": "GistApp",
+      "description": "for Github"
+    }
+  },
+  "default_locale": "en-US"
+  
+}
