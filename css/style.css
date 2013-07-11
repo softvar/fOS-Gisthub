@@ -1,0 +1,20 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: MozTT, sans-serif; 
+  font-weight: normal;
+  font-size: 10px;
+  width: 320px;
+}
+
+@media (min-height: 926px) {
+  body {
+    background: #1D2125 no-repeat 0 -34px;
+    transform: scale(1.7);
+    transform-origin: 0 0;
+    background-size: 170%;
+    
+  }
+}
