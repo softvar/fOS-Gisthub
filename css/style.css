@@ -19,90 +19,276 @@ body, html {
   }
 }
 
+
 #tagline{
-  color: red;
-  width: 250px;
-  margin-top: 40px;
-  padding-left: 35px;
-  padding-top: 10px;
-  font-size: 15px;
-  font-weight: 500;
-  position: fixed;
-  text-align: center;
+	color: red;
+	width: 250px;
+	margin-top: 40px;
+	padding-left: 35px;
+	padding-top: 10px;
+	font-size: 15px;
+	font-weight: 500;
+	position: fixed;
+	text-align: center;
 }
 
 #wrong_credential{
-  margin-top: 18px;
-  margin-left: 16px;
-  width: 90%;
+	margin-top: 18px;
+	margin-left: 16px;
+	width: 90%;
 
 }
 #header {
-  width: 320px;
-  height: 25px;
-  background: #3c90af; url("../images/tweed.png");
-  color: white;
-  text-align: center;
-  font-size: 16px;
-  font-weight: 600;
-  padding-top: 5px;
-  padding-bottom: 0px;
-  position: fixed;
+	width: 320px;
+	height: 25px;
+	background: #3c90af; url("../images/tweed.png");
+	color: white;
+	text-align: center;
+	font-size: 16px;
+	font-weight: 600;
+	padding-top: 5px;
+	padding-bottom: 0px;
+	position: fixed;
 }
 #loginHeader {
-  width: 212px;
-  height: .1%;
-  background: #718898;
-  margin: 34px;
-  margin-left: 30px;
-  margin-top: 100px;
-  margin-bottom: 0px;
-  position: relative;
-  color: white;
-  font-size: 14px;
-  font-weight: bold;
-  padding: 15px 25px 25px 25px;
-  border-radius: 4px 4px 0px 0px;
+	width: 212px;
+	height: .1%;
+	background: #718898;
+	margin: 34px;
+	margin-left: 30px;
+	margin-top: 100px;
+	margin-bottom: 0px;
+	position: relative;
+	color: white;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 15px 25px 25px 25px;
+	border-radius: 4px 4px 0px 0px;
 }
 
 #loginBox {
-  width: 210px;
-  height: 200px;
-  border: 1px solid #d8dee2;
-  border-radius: 0px 0px 4px 4px;
-  margin: 34px;
-  margin-left: 30px;
-  margin-top: 0px;
-  margin-bottom: 10px;
-  padding: 25px;
-  padding-bottom: 0px;
-  position: relative;
+	width: 210px;
+	height: 200px;
+	border: 1px solid #d8dee2;
+	border-radius: 0px 0px 4px 4px;
+	margin: 34px;
+	margin-left: 30px;
+	margin-top: 0px;
+	margin-bottom: 10px;
+	padding: 25px;
+	padding-bottom: 0px;
+	position: relative;
 }
 #loginBox input[type="text"],#loginBox input[type="password"]{
-  width: 175px;
+	width: 175px;
 
 }
 
 #user-info{
-  width: 300px;
-  height:30px;
-  background: white;
-  color: white;
-  margin-bottom: 10px;
-  padding: 2px;
-  border-bottom: 1px solid #ccc;
-  position: relative;
-  margin-left: 10px;
+	width: 300px;
+	height:30px;
+	background: white;
+	color: white;
+	margin-bottom: 10px;
+	padding: 2px;
+	border-bottom: 1px solid #ccc;
+	position: relative;
+	margin-left: 10px;
 }
 
 #user-login{
-  color: black;
-  font-size: 22px;
-  padding: 3px;
-  font-weight: thin;
+	color: black;
+	font-size: 22px;
+	padding: 3px;
+	font-weight: thin;
 }
 #listGists{
-  padding: 2px;
-  
+	padding: 2px;
+	
 
+}
+#pagination{
+	position: absolute;
+	margin-left: 10px;
+	margin-top:417px;
+	padding: 4px;
+	text-align: center;
+	width: 290px;
+	border-top: 1px solid #222222;
+}
+textarea[name=view] {
+    resize: none;
+    position:fixed;
+}
+
+textarea[id=editContent]{
+	height: 160px;
+	width: 286px;
+	resize: none;
+	margin-left: 10px;
+
+}
+#gist_filename,#gist_description,#gist_content{
+	margin-left: 20px;
+	margin-top: 8px;
+	margin-bottom: 0px;
+	width: 270px;
+}
+#create_gist{
+	margin-left: 30%;
+	height: 40px;
+	width: 120px;
+	font-size: 18px;
+	font-weight: 600;
+
+}
+#editFileName,#editDescription{
+	
+	margin-right: 10px;
+	position: relative;
+	width: 200px;
+}
+#view-edit-info{
+	color: #756262;
+	font-weight: 600;
+	font-size: 15px;
+	margin-left: 10px;
+}
+#editProceed{
+	margin-left: 40%;
+}
+#getview{
+	margin:5px;
+	width:290px;
+	height:230px;
+	padding: 6px;
+	background: #eaeaea;
+}
+
+#new-gist{
+	margin-top: 110px;
+	margin-left: 82px;
+	width: 160px;
+	height: 70px;
+	font-size: 17px;
+	padding: 10px;
+	font-weight: 600;
+}
+
+#prop-manage{
+	display:inline;
+	margin-left: 20px;
+    float: right;
+    padding-right: 10px;
+    position: relative;
+}
+.dispdesc{
+	margin-left: 10px;
+	color: #222222;
+	font-size: 16px;
+	margin-top: 3px;
+	font-weight: 600;
+	background: #f7fcff;
+	border: none !important;
+	box-shadow: none;
+	text-decoration: none;
+}
+#search{
+	margin-left: 10px;
+	width: 200px;
+}
+
+
+#no-gist-msg{
+	margin:20px;
+	text-align: center;
+	font-size: 18px;
+	font-weight: 600;
+	color: #222222;
+}
+#myCarousel{
+	
+	width: 312px;
+
+}
+#carousel1,#carousel2,#carousel3{
+	height:300px;
+	/*background: #f7fcff;*/
+	background: url(../images/help.jpg);
+   box-shadow: 4px 6px 4px rgba(0,0,0,0.5),
+   inset 2px 2px 2px rgba(234,234,234,0.75);
+    
+   -moz-box-shadow: 4px 6px 4px rgba(0,0,0,0.5),
+   inset 4px 4px 4px rgba(255,0,255,0.75);
+    font-family:"Times New Roman", Times, serif;
+	color: #002f8e;
+	width:250px;
+	font-size: 20px;
+	margin-left: 5px;
+	margin-top: 10px;
+	padding: 10px;
+}
+#carousel2,#carousel3{
+	text-align: center;
+
+
+}
+#user-logout{
+	margin-left: 145px;
+	margin-top: 10px;
+	width: 20px;
+	position: fixed;
+	height: 20px;
+}
+.circle {
+	background-color: rgba(0,0,0,0);
+	border:5px solid rgba(0,183,229,0.9);
+	opacity:.9;
+	border-right:5px solid rgba(0,0,0,0);
+	border-left:5px solid rgba(0,0,0,0);
+	border-radius:50px;
+	box-shadow: 0 0 35px #2187e7;
+	width:50px;
+	height:50px;
+	margin:0 auto;
+	
+	-moz-animation:spinPulse 1s infinite ease-in-out;
+	-webkit-animation:spinPulse 1s infinite linear;
+	z-index:10000;
+}
+.circle1 {
+	background-color: rgba(0,0,0,0);
+	border:5px solid rgba(0,183,229,0.9);
+	opacity:.9;
+	border-left:5px solid rgba(0,0,0,0);
+	border-right:5px solid rgba(0,0,0,0);
+	border-radius:50px;
+	box-shadow: 0 0 15px #2187e7; 
+	width:30px;
+	height:30px;
+	margin:0 auto;
+	position:relative;
+	top:-50px;
+	
+	-moz-animation:spinoffPulse 1s infinite linear;
+	-webkit-animation:spinoffPulse 1s infinite linear;
+	z-index:10000;
+}
+@-moz-keyframes spinPulse {
+	0% { -moz-transform:rotate(160deg); opacity:0; box-shadow:0 0 1px #2187e7;}
+	50% { -moz-transform:rotate(145deg); opacity:1; }
+	100% { -moz-transform:rotate(-320deg); opacity:0; }
+}
+@-moz-keyframes spinoffPulse {
+	0% { -moz-transform:rotate(0deg); }
+	100% { -moz-transform:rotate(360deg);  }
+}
+@-webkit-keyframes spinPulse {
+	0% { -webkit-transform:rotate(160deg); opacity:0; box-shadow:0 0 1px #2187e7; }
+	50% { -webkit-transform:rotate(145deg); opacity:1;}
+	100% { -webkit-transform:rotate(-320deg); opacity:0; }
+}
+@-webkit-keyframes spinoffPulse {
+	0% { -webkit-transform:rotate(0deg); }
+	100% { -webkit-transform:rotate(360deg); }
 }
