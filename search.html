@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<link rel="stylesheet" href="css/bootstrap.min.css"></link>
+<link rel="stylesheet" href="css/style.css"></link>
+<script src="js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript">
+var username=null,password=null;
+var database,database_url,userimage,loginuser;
+window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+window.IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
+window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange;
+if (!window.indexedDB) {
+    alert("Sorry!Your browser doesn't support IndexedDB");
+}
+function init(){
+var request = window.indexedDB.open("gadha4",1);
+request.onerror = function(event) {
+console.log(event.target.errorCode);
+};
+request.onsuccess = function(event) {
+  database=request.result;
+  show(); 
+  
+  
+};
+request.onupgradeneeded = function(event) {
+  var db = event.target.result;
+  var objectStore = db.createObjectStore("notes", { keyPath: "id",autoIncrement:true});
+};
+}
+	
+function show(){
+var notes="";
+var objectStore = database.transaction("notes").objectStore("notes");
+objectStore.openCursor().onsuccess = function(event) {
+  var cursor = event.target.result;
+
+  if (cursor) {
+    var link="<a class=\"notelist\" id=\""+cursor.key+"\" href=\"#\">"+cursor.value.name+"</a>";
+    var listItem="<li>"+link+"</li>";
+	notes=notes+listItem;
+	username = cursor.value.name;
+	password = cursor.value.pass;
+  userimage = cursor.value.image;
+  loginuser = cursor.value.login;
+  fetchUserDetails();
+  }
+};
+
+}
+window.addEventListener("DOMContentLoaded", init, false);
+</script>
+</head>
+<body>
+<div id="header">GISTAPP</div>
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+  <ul class="nav nav-tabs">
+    <li><a href="view_gists.html" data-toggle="tab">View Gists</a></li>
+    <li><a href="create_gist.html" data-toggle="tab">Create</a></li>
+	<li class="active"><a href="#" data-toggle="tab">Search</a></li>
+	<li><a href="help.html" data-toggle="tab">Help</a></li>
+  </ul>
+ </div>
+
+ <div id="user-info">
+  <span id="user-image"></span>
+  <span id="user-login"></span>
+  <span id="user-logout"><a href="logout.html">Logout</a></span>
+ </div>
+ <script type="text/javascript">
+ function fetchUserDetails(){
+    $('#user-image').html('<img src="'+userimage+'" height="30" width="30"></img>');
+    $('#user-login').html(loginuser);
+}
+    </script>
+</body>
+</html>
