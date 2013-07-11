@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="description" content="GistHub">
+<meta name="keywords" content="IndexedDB, GitHub, Gist, GistHub, GitHub Api">
+<meta name="author" content="Varun Malhotra">
+<meta charset="UTF-8">
+
+<link rel="stylesheet" href="css/bootstrap.min.css"></link>
+<link rel="stylesheet" href="css/style.css"></link>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script> 
+
+<script type="text/javascript" src="js/bootstrap-carousel.js" ></script>
+<script type="text/javascript" src="js/bootstrap-transition.js"></script>
+</head>
+<body>
+<div id="header">GistHub</div>
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+  <ul class="nav nav-tabs">
+    <li><a href="view_gists.html" data-toggle="tab">View Gists</a></li>
+    <li><a href="create_gist.html" data-toggle="tab">Create</a></li>
+	<li><a href="search.html" data-toggle="tab">Search</a></li>
+	<li  class="active"><a href="#" data-toggle="tab">Help</a></li>
+  </ul>
+ </div>
+ <div id="user-info">
+  <span id="user-image"></span>
+  <span id="user-login"></span>
+  <a href="logout.html"><img id="user-logout" src="images/signout.png" ></a>
+ </div>
+
+<div class="carousel slide span4" id="myCarousel">
+<div class="carousel-inner">
+  <div class="item active">
+        <ul class="thumbnails">
+            <li class="span2">
+                    
+                    <div id="carousel1">  
+                    	
+                    </div>
+                
+            </li>
+            
+        </ul>
+  </div>
+  <div class="item">
+        <ul class="thumbnails">
+            <li class="span2">
+                
+                    <div id="carousel2"></div>
+               
+            </li>
+            
+        </ul>
+  </div>
+  <div class="item">
+        <ul class="thumbnails">
+            <li class="span2">
+               
+                    <div id="carousel3"></div>
+               
+            </li>
+           
+        </ul>
+  </div>
+</div>
+<a data-slide="prev" href="#myCarousel" class="left carousel-control">‹</a>
+<a data-slide="next" href="#myCarousel" class="right carousel-control">›</a>
+</div>
+
+ <script type="text/javascript" src="js/help.js"></script>
+
+</body>
+</html>
