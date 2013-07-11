@@ -18,3 +18,91 @@ body, html {
     
   }
 }
+
+#tagline{
+  color: red;
+  width: 250px;
+  margin-top: 40px;
+  padding-left: 35px;
+  padding-top: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  position: fixed;
+  text-align: center;
+}
+
+#wrong_credential{
+  margin-top: 18px;
+  margin-left: 16px;
+  width: 90%;
+
+}
+#header {
+  width: 320px;
+  height: 25px;
+  background: #3c90af; url("../images/tweed.png");
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  padding-top: 5px;
+  padding-bottom: 0px;
+  position: fixed;
+}
+#loginHeader {
+  width: 212px;
+  height: .1%;
+  background: #718898;
+  margin: 34px;
+  margin-left: 30px;
+  margin-top: 100px;
+  margin-bottom: 0px;
+  position: relative;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 15px 25px 25px 25px;
+  border-radius: 4px 4px 0px 0px;
+}
+
+#loginBox {
+  width: 210px;
+  height: 200px;
+  border: 1px solid #d8dee2;
+  border-radius: 0px 0px 4px 4px;
+  margin: 34px;
+  margin-left: 30px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  padding: 25px;
+  padding-bottom: 0px;
+  position: relative;
+}
+#loginBox input[type="text"],#loginBox input[type="password"]{
+  width: 175px;
+
+}
+
+#user-info{
+  width: 300px;
+  height:30px;
+  background: white;
+  color: white;
+  margin-bottom: 10px;
+  padding: 2px;
+  border-bottom: 1px solid #ccc;
+  position: relative;
+  margin-left: 10px;
+}
+
+#user-login{
+  color: black;
+  font-size: 22px;
+  padding: 3px;
+  font-weight: thin;
+}
+#listGists{
+  padding: 2px;
+  
+
+}
