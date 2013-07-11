@@ -1,70 +1,20 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+<meta name="description" content="GistHub">
+<meta name="keywords" content="IndexedDB, GitHub, Gist, GistHub, GitHub Api">
+<meta name="author" content="Varun Malhotra">
+<meta charset="UTF-8">
+
 <link rel="stylesheet" href="css/bootstrap.min.css"></link>
 <link rel="stylesheet" href="css/style.css"></link>
-<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script> -->
-<script src="js/jquery-1.8.2.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script> 
+<!--<script src="js/jquery-1.8.2.min.js"></script>-->
+
 <script type="text/javascript" src="js/bootstrap-modal.js"></script>
-
-<script>
-var use=null,pas=null,username,password;
-var database,userimage,loginuser;
-window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
-window.IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
-window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange;
-if (!window.indexedDB) {
-    alert("Sorry!Your browser doesn't support IndexedDB");
-}
-function init(){
-var request = window.indexedDB.open("gadha4",1);
-request.onerror = function(event) {
-console.log(event.target.errorCode);
-};
-request.onsuccess = function(event) {
-  database=request.result;
-  show();
-  
-};
-request.onupgradeneeded = function(event) {
-  var db = event.target.result;
-  var objectStore = db.createObjectStore("notes", { keyPath: "id",autoIncrement:true});
-};
-}
-
-	
-function show(){
-var notes="";
-var objectStore = database.transaction("notes").objectStore("notes");
-objectStore.openCursor().onsuccess = function(event) {
-  var cursor = event.target.result;
-
-  if (cursor) {
-    var link="<a class=\"notelist\" id=\""+cursor.key+"\" href=\"#\">"+cursor.value.name+"</a>";
-    var listItem="<li>"+link+"</li>";
-	notes=notes+listItem;
-	use = cursor.value.name;
-	pas = cursor.value.pass;
-   userimage = cursor.value.image;
-  loginuser = cursor.value.login;
-    cursor.continue();
-  }
-  else
-  {
-   
-   login_form();
-  }
-};
-}
-
-
-
-
-window.addEventListener("DOMContentLoaded", init, false);
-</script>
 </head>
 <body>
-<div id="header">GISTAPP</div>
+<div id="header">GistHub</div>
 <div class="tabbable"> <!-- Only required for left/right tabs -->
   <ul class="nav nav-tabs">
     <li ><a href="view_gists.html" data-toggle="tab">View Gists</a></li>
@@ -76,93 +26,29 @@ window.addEventListener("DOMContentLoaded", init, false);
  <div id="user-info">
   <span id="user-image"></span>
   <span id="user-login"></span>
-  <span id="user-logout"><a href="logout.html">Logout</a></span>
+  <a href="logout.html"><img id="user-logout" src="images/signout.png" ></a>
  </div>
 
 <div id="input_gist_info"></div>
 
-<script>
-function login_form() {
-
-username = use;
-password = pas;
-$('#user-image').html('<img src="'+userimage+'" height="30" width="30"></img>');
-$('#user-login').html(loginuser);
-/*document.getElementById("login/logout").innerHTML = "<input type=\"button\" class=\"btn-success\" value=\"Logout\" onclick=\"logout()\"/>";*/
-create_new_gist(username,password);
-
-
-}
-
-
-
-function make_base_auth(user, password) {
-  var tok = user + ':' + password;
-  var hash = btoa(tok);
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   
-  return "Basic " + hash;
-}
+  <div class="modal-body">
+    <p style="text-align: center;">Successfully Created</p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn-success" data-dismiss="modal"  data-type="new" aria-hidden="true">Ok</button>
+    
+  </div>
+</div>
 
+<div id="wait" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  
+  <div class="modal-body">
+    <div class="circle"></div><div class="circle1"></div></div>
+  </div>
+  
 
-function create_new_gist(username,password) {
-
-document.getElementById("input_gist_info").innerHTML = '<input type="text" id="gist_filename" placeholder="file name" required/>' + '</br>' +
-'<input type="text" id="gist_description" placeholder="enter description(optional)"/>' + '</br>' + '<textarea id="gist_content" cols="10" rows="10" placeholder="enter content" required></textarea>' + '</br>' +
-'<div id="notify_verification"></div>' + '</br>' +
-'<input type="button" class="btn-success" value="Create Gist" onclick="check_input_gist_info() " />';
-}
-
-function check_input_gist_info() {
-
-var gist_filename = document.getElementById("gist_filename").value;
-var gist_description = document.getElementById("gist_description").value;
-var gist_content = document.getElementById("gist_content").value;
-
-alert(gist_filename);
-if(gist_filename=="" || gist_content=="")
-	return false;
-else
-	final_create_gist(username,password,gist_filename,gist_description,gist_content);
-
-}
-
-function final_create_gist(username,password,gist_filename,gist_description,gist_content){
-
-var data = {
-        "description": gist_description,
-        "public": true,
-          
-        "files": {
-          
-        }
-      };
-
-		 
-	var filename = gist_filename;
-	data["files"][filename] = {
-    "content": gist_content
-    }
-
-      $.ajax({
-        url: 'https://api.github.com/gists',
-        type: 'POST',
-        dataType: 'json',
-        beforeSend: function (xhr){ 
-        xhr.setRequestHeader('Authorization', make_base_auth(username, password)); 
-    },
-        data: JSON.stringify(data)
-      })
-      .success( function(e) {
-        console.log(e);
-		//savecred(username,password);
-      })
-      .error( function(e) {
-        console.warn("gist save error", e);
-		document.getElementById("notify_verification").innerHTML = "<p class=\"alert alert-error\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>"
-        + "<strong>Warning!</strong> Check credentials</p>";
-		
-      });
-}
-</script>
+<script type="text/javascript" src = "js/create.js"></script>
 </body>
 </html>

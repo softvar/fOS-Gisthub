@@ -1,59 +1,25 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+<meta name="description" content="GistHub">
+<meta name="keywords" content="IndexedDB, GitHub, Gist, GistHub, GitHub Api">
+<meta name="author" content="Varun Malhotra">
+<meta charset="UTF-8">
+
 <link rel="stylesheet" href="css/bootstrap.min.css"></link>
 <link rel="stylesheet" href="css/style.css"></link>
-<script src="js/jquery-1.8.2.min.js"></script>
-<script type="text/javascript">
-var username=null,password=null;
-var database,database_url,userimage,loginuser;
-window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
-window.IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
-window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange;
-if (!window.indexedDB) {
-    alert("Sorry!Your browser doesn't support IndexedDB");
-}
-function init(){
-var request = window.indexedDB.open("gadha4",1);
-request.onerror = function(event) {
-console.log(event.target.errorCode);
-};
-request.onsuccess = function(event) {
-  database=request.result;
-  show(); 
-  
-  
-};
-request.onupgradeneeded = function(event) {
-  var db = event.target.result;
-  var objectStore = db.createObjectStore("notes", { keyPath: "id",autoIncrement:true});
-};
-}
-	
-function show(){
-var notes="";
-var objectStore = database.transaction("notes").objectStore("notes");
-objectStore.openCursor().onsuccess = function(event) {
-  var cursor = event.target.result;
 
-  if (cursor) {
-    var link="<a class=\"notelist\" id=\""+cursor.key+"\" href=\"#\">"+cursor.value.name+"</a>";
-    var listItem="<li>"+link+"</li>";
-	notes=notes+listItem;
-	username = cursor.value.name;
-	password = cursor.value.pass;
-  userimage = cursor.value.image;
-  loginuser = cursor.value.login;
-  fetchUserDetails();
-  }
-};
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script> 
+<!--<script src="js/jquery-1.8.2.min.js"></script>-->
 
-}
-window.addEventListener("DOMContentLoaded", init, false);
-</script>
+<script type="text/javascript" src="js/bootstrap-tooltip.js" ></script>
+<script type="text/javascript" src="js/bootstrap-modal.js"></script>
+<script type="text/javascript" src="js/bootstrap-button.js"></script>
 </head>
 <body>
-<div id="header">GISTAPP</div>
+<div id="header">GistHub</div>
+<div id="pagination" class="btn-group" data-toggle="buttons-radio">
+ </div>
 <div class="tabbable"> <!-- Only required for left/right tabs -->
   <ul class="nav nav-tabs">
     <li><a href="view_gists.html" data-toggle="tab">View Gists</a></li>
@@ -66,13 +32,62 @@ window.addEventListener("DOMContentLoaded", init, false);
  <div id="user-info">
   <span id="user-image"></span>
   <span id="user-login"></span>
-  <span id="user-logout"><a href="logout.html">Logout</a></span>
+  <a href="logout.html"><img id="user-logout" src="images/signout.png" ></a>
  </div>
- <script type="text/javascript">
- function fetchUserDetails(){
-    $('#user-image').html('<img src="'+userimage+'" height="30" width="30"></img>');
-    $('#user-login').html(loginuser);
-}
-    </script>
+
+ <input type="text" id="search" class="input-medium search-query">
+  <button type="submit" class="btn" data-type="search">Search</button>
+
+ <div id="listGists"></div>
+
+ <div id="wait" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  
+  <div class="modal-body">
+    <div class="circle"></div><div class="circle1"></div></div>
+</div>
+
+<div id="modal-unstar" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  
+  <div class="modal-body">
+    <p id="modal-unstar-content" style="text-align: center;">Successfully Unstarred</p>
+</div>
+</div>
+
+<div id="modal-star" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  
+  <div class="modal-body">
+    <p id="modal-star-content" style="text-align: center;">Successfully Starred</p>
+</div>
+</div>
+
+<div id="modal-fork" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  
+  <div class="modal-body">
+    <p id="modal-fork-content" style="text-align: center;">Successfully Forked</p>
+</div>
+</div>
+
+<div id="modal-notstar-unstar" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  
+  <div class="modal-body">
+    <p id="modal-unstar-content" style="text-align: center;">Gist is already Unstarred</p>
+</div>
+</div>
+
+<div id="modal-already-star" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  
+  <div class="modal-body">
+    <p id="modal-star-content" style="text-align: center;">Gist is already Starred</p>
+</div>
+</div>
+
+<div id="modal-error" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  
+  <div class="modal-body">
+    <p style="text-align: center;">Error!</p>
+  </div>
+  
+</div>
+ <script type="text/javascript" src="js/search.js"></script>
 </body>
 </html>
