@@ -15,7 +15,7 @@ Download
 
 Packaged and available for download on firefox marketplace [GistHub](https://marketplace.firefox.com/app/gisthub/)
 
-Tags
-----
+Related Tags
+------------
 
 [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML), [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS), [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript), [JQuery](https://developer.mozilla.org/en-US/docs/Web/JavaScript/JQuery), [Twitter-Bootstrap](http://getbootstrap.com/2.3.2/), [IndexedDB](https://developer.mozilla.org/en/docs/IndexedDB), [AJAX](https://developer.mozilla.org/en/docs/AJAX), [Github API v3](http://developer.github.com/v3/)
