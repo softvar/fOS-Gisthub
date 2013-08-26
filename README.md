@@ -1,4 +1,4 @@
-fos-Gisthub
+fOS-Gisthub
 ===========
 
 Managing Github-Gists in firefox smartphone.
